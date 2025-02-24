@@ -23,5 +23,11 @@ def promotion():
 def mars_picture():
     return render_template('image_mars.html')
 
+@app.route('/promotion_image')
+def promotion_image():
+    return render_template('promotion.html')
+
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
+
