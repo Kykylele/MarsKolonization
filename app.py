@@ -1,15 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return '<h1>Миссия Колонизация Марса</h2>'
+def main():
+    return render_template('base.html')
 
+@app.route('/index/<title>')
+def index(title):
+    return render_template('base.html', title=title)
 
-@app.route('/index')
-def mission():
-    return '<h2>И на Марсе будут яблони цвести!</h2>'
 
 @app.route('/promotion')
 def promotion():
@@ -30,4 +30,3 @@ def promotion_image():
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
-
