@@ -1,0 +1,20 @@
+{%extends "base.html"%}
+
+{%block content%}
+{%if list == 'ul'%}
+<ul>
+    {%for prof in profs%}
+    <li>{{prof}}</li>
+    {%endfor%}
+</ul>
+{%elif list == 'ol'%}
+<ol>
+    {%for prof in profs%}
+    <li>{{prof}}</li>
+    {%endfor%}
+</ol>
+{%else%}
+<h4>
+    Това въвеждане не е възможно</h4>
+{%endif%}
+{%endblock%}
