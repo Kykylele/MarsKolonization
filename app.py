@@ -37,5 +37,17 @@ def prof(lst):
     c = {'list': lst, 'profs': ['Инженер изследовател', 'пилот', 'строител', 'екзобиолог', 'лекар', 'инженер по тераформиране']}
     return render_template('listprof.html', **c)
 
+@app.route('/astronaut_selection')
+def astro_sel():
+    return render_template('asronaut_selection.html')
+
+@app.route('/answer', methods=['POST'])
+@app.route('/auto_answer', methods=['POST'])
+def answer():
+    context = {'title': 'Анкета', 'sur': request.form['surname'], 'name': request.form['name'], 'education': request.form['education'],
+               'profession': ', '.join(request.form.getlist('profession')), 'motivation': request.form['motivation'],
+               'ready': request.form.get('ready', '') == 'Готов'}
+    return render_template('answer.html', **context)
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
