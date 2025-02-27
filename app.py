@@ -32,5 +32,10 @@ def traning(prof):
     c =  {'prof': prof}
     return render_template('Training.html', **c)
 
+@app.route('/list_prof/<lst>')
+def prof(lst):
+    c = {'list': lst, 'profs': ['Инженер изследовател', 'пилот', 'строител', 'екзобиолог', 'лекар', 'инженер по тераформиране']}
+    return render_template('listprof.html', **c)
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
