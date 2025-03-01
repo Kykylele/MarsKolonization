@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варианты выбора</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        li:nth-child(1) { background-color: #d0ffd0; } /* Light Green */
+        li:nth-child(2) { background-color: #d0ffd0; } /* Light Green */
+        li:nth-child(3) { background-color: #ffffd0; } /* Light Yellow */
+        li:nth-child(4) { background-color: #ffdede; } /* Light Red */
+        li:nth-child(5) { background-color: #ffdede; } /* Light Red */
+
+        /* Чтобы работало при меньшем количестве фактов */
+        li {padding: 5px; margin-bottom: 3px;} /* Добавим немного отступов */
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Моето предложение: Маркс</h1>
+        <ul>
+            {% for fact in facts %}
+                <li>{{ fact }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
