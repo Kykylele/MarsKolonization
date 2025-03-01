@@ -49,5 +49,11 @@ def answer():
                'ready': request.form.get('ready', '') == 'Готов'}
     return render_template('answer.html', **context)
 
+@app.route('/choice/<planet_name>')
+def choises():
+    facts = ['Тази планета е близо до Земята;', 'Има много необходими ресурси;', 'Има вода и атмосфера;',
+             'Върху него има малко магнитно поле;', 'Накрая тя е просто красива!']
+    return render_template('choise.html', **facts)
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
