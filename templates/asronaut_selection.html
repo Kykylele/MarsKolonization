@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Избор на астронавт</title>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <h1>Анкетна карта на кандидат</h1>
+            <h2>за участие в мисията</h2>
+            <form method="post" action="answer">
+                <div class="mb-3">
+                    <input type="text" class="form_control" placeholder="Въведете фамилия">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form_control" placeholder="Въведете име">
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form_control" placeholder="Въведете email">
+                </div>
+                <div class="mb-3">
+                    <h4>образование</h4>
+                    <select type="form-select" name="education">
+                        <option value="">Nach</option>
+                        <option value="sr">sr</option>
+                        <option value="vish">vish</option>
+                        <option value="k">k</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <h4>Професия</h4>
+                    <div class="form-check">
+                        <input type="checkbox" value="ing"
+                               class="form-check-input" name="prof"
+                               id="ingeneer">
+                        <label class="form-check-label" for="ingeneer"> By;tyth</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" value="ing"
+                               class="form-check-input" name="prof"
+                               id="pilot">
+                        <label class="form-check-label" for="pilot"> By;tyth</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <h4>Пол</h4>
+                    <div class="form-check">
+                        <input type="radio" value="Female" name="gender" id="male" class="form-check-input">
+                        <label class="form-check-label" for="male">
+
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" value="Female" name="gender" id="female" class="form-check-input">
+                        <label class="form-check-label" for="female">
+
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <h4>Mot</h4>
+                    <textarea class="form-control" name="motivation"></textarea>
+                </div>
+                <div class="mb-3">
+                    <div class="mb-3">
+                        <input type="checkbox" value="Ujnjd">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="Otpr" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>
