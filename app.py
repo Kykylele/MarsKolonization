@@ -1,6 +1,20 @@
 from flask import Flask, render_template, request
+from flask_wtf import FlaskForm
+from werkzeug.utils import redirect
+from wtforms import StringField, PasswordField, SubmitField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'gachimuchi'
+
+
+class LoginForm(FlaskForm):
+    astronautid = StringField('ID астронавта', validators=[DataRequired()])
+    astronautpassword = PasswordField("Пароль астронавта", validators=[DataRequired()])
+    cap_id = StringField('ID капитана', validators=[DataRequired()])
+    cap_password = PasswordField("Пароль капитана", validators=[DataRequired()])
+    access = SubmitField('Доступ')
+
 
 @app.route('/')
 def main():
@@ -49,11 +63,14 @@ def answer():
                'ready': request.form.get('ready', '') == 'Готов'}
     return render_template('answer.html', **context)
 
-@app.route('/choice/<planet_name>')
-def choises():
-    facts = ['Тази планета е близо до Земята;', 'Има много необходими ресурси;', 'Има вода и атмосфера;',
-             'Върху него има малко магнитно поле;', 'Накрая тя е просто красива!']
-    return render_template('choise.html', **facts)
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if request.method == 'GET':
+        return render_template('login.html', form=form)
+    elif request.method == 'POST':
+        if form.validate_on_submit():
+            return redirect('/')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
