@@ -72,5 +72,9 @@ def login():
         if form.validate_on_submit():
             return redirect('/')
 
+@app.route('/choice/<planet_name>')
+def choise():
+    return render_template('choise.html')
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
