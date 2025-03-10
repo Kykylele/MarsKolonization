@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 from werkzeug.utils import redirect
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
+from data import db_session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'gachimuchi'
@@ -72,9 +73,6 @@ def login():
         if form.validate_on_submit():
             return redirect('/')
 
-@app.route('/choice/<planet_name>')
-def choise():
-    return render_template('choise.html')
-
 if __name__ == '__main__':
+    db_session.global_init('database/mars_explorer.db')
     app.run(host='127.0.0.1', port=8080)
