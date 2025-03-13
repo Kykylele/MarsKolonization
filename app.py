@@ -4,10 +4,10 @@ from werkzeug.utils import redirect
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired
 from data import db_session
+from data.jobs import Jobs
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'gachimuchi'
-
 
 class LoginForm(FlaskForm):
     astronautid = StringField('ID астронавта', validators=[DataRequired()])
@@ -19,7 +19,9 @@ class LoginForm(FlaskForm):
 
 @app.route('/')
 def main():
-    return render_template('base.html')
+    session = db_session.create_session()
+    jobs = session.query(Jobs).all()
+    return render_template('index.html', jobs=jobs)
 
 @app.route('/index/<title>')
 def index(title):
