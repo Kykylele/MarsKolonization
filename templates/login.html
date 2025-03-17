@@ -1,34 +1,29 @@
-{%extends "base.html"%}
-{%block content%}
-<h1><img src="{{ url_for('static', filename='picture/MARS-2-7.png')}}">Аварийный доступ</h1>
-<form action="login" method="POST">
-    {{form.hidden_tag()}}
-    <div class="mb-3">
-        <label for="astronaut" class="form-label">
-            {{form.astronautid.label}}
-        </label>
-        {{form.astronautid(class="form-control", id="astronaut")}}
-    </div>
-    <div class="mb-3">
-        <label for="astronautpas" class="form-label">
-            {{form.astronautpassword.label}}
-        </label>
-        {{form.astronautpassword(class="form-control", id="astronautpas")}}
-    </div>
-    <div class="mb-3">
-        <label for="cap_id" class="form-label">
-            {{form.cap_id.label}}
-        </label>
-        {{form.cap_id(class="form-control", id="cap_id")}}
-    </div>
-    <div class="mb-3">
-        <label for="cap_pas" class="form-label">
-            {{form.cap_password.label}}
-        </label>
-        {{form.cap_password(class="form-control", id="cap_pas")}}
-    </div>
-    <div class="mb-3">
-        {{form.access(class="btn btn-primary")}}
-    </div>
-</form>
-{%endblock%}
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Авторизация</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(class="form-control", type="email") }}<br>
+            {% for error in form.email.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(class="form-control", type="password") }}<br>
+            {% for error in form.password.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+        <div>{{ message }}</div>
+    </form>
+{% endblock %}
