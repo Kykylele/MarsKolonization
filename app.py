@@ -8,11 +8,16 @@ from data.jobs import Jobs
 from data.users import User
 import datetime
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_restful import Api
+from users_resource import UsersResource, UsersListResource
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'gachimuchi'
 login_manager = LoginManager()
 login_manager.init_app(app)
+api = Api(app)
+api.add_resourse(UsersResource, '/api/v2/users/<int:user_id>')
+api.add_resourse(UsersResource, '/api/v2/users')
 
 
 @login_manager.user_loader
