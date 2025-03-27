@@ -137,7 +137,6 @@ def cookie_test():
     return res
 
 
-app = Flask(__name__)
 app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(
     days=365
 )
